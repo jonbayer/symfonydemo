@@ -17,8 +17,8 @@ Things I would do to make this production-ready
 
 Notes on current setup
 ----------
-AMI Builds are comparitively slow, there are a number of ways this process (deployments) could be accelerated.
-The database is ephemeral. 
+* AMI Builds are comparitively slow, there are a number of ways this process (deployments) could be accelerated.
+* The database is ephemeral. 
 
 Installation
 ------------
