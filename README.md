@@ -25,7 +25,7 @@ Installation
 
 **Step 1.**
 
-Simply clone this repo and set your own AWS keys as environment secrets in github actions, it will build an AMI in the us-east-1 region, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
+Simply clone this repo and set your own AWS keys as environment secrets in github actions, it will build an AMI in the us-east-1 region on merge, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
 
 **Step 2.** 
 just terraform CLI for this step, CI/Cloud-based would be ideal here but I ran out of time.
