@@ -12,6 +12,6 @@
         state: present
     - name: install php-fpm 
       package:
-        name: 'nginx'
+        name: 'php-fpm'
         state: present
 

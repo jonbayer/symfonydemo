@@ -59,6 +59,10 @@ This is an image for HashiCups.
       "sudo apt-get update && sudo apt-get -y upgrade  && sudo apt-get -y install nginx && sudo chown -R ubuntu: /var/www/html"
     ]
   }
+   provisioner "ansible" {
+      playbook_file = "./ansible/webserver.yml"
+    }
+
   # systemd unit for HashiCups service
   provisioner "file" {
     source      = "./"
