@@ -48,6 +48,12 @@ This is an image for HashiCups.
 
 
   # Set up HashiCups
+
+  provisioner "shell" {
+    inline = [
+      "/usr/bin/cloud-init status --wait"
+    ]
+  }
   provisioner "shell" {
     inline = [
       "sudo apt-get update && sudo apt-get -y upgrade  && sudo apt-get -y install nginx"
