@@ -11,6 +11,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
   build_webserver_ami:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     environment: hcp 
     steps:
