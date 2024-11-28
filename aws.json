@@ -1,0 +1,45 @@
+{
+"variables": {
+  },
+   "provisioners": [ 
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 20",
+        "sudo yum -y update",
+        "sudo yum install ansible python-boto3 python-lxml ncdu python-botocore ipa-client jq sysstat --enablerepo=epel --enablerepo=epel-testing -y"
+      ]
+    },
+     
+     {
+    "type": "ansible-local",
+  "playbook_dir": ".",
+  "playbook_file": "webserver.yml",
+  "extra_arguments": [  ]
+  }
+  
+  
+  ],
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "shutdown_behavior": "terminate",
+    "subnet_id" : "subnet-3ff00b00", 
+    "source_ami_filter": {
+      "filters": {
+        "name": "amzn2-ami-hvm*x86_64-gp2"
+	},
+      	"owners" : "amazon",
+	"most_recent": true
+    },    
+    "ami_users": [ 
+      "794038232684"
+    ],
+    "instance_type": "t2.micro",
+    "ebs_optimized": "true",
+    "ssh_username": "ec2-user",
+    "ami_name": "test-webserver-ami-{{timestamp}}"
+  }]
+}
