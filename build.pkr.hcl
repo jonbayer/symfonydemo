@@ -38,7 +38,7 @@ build {
   hcp_packer_registry {
     bucket_name = "webstack"
     description = <<EOT
-This is an image for HashiCups.
+    nginx + php-fpm + composer stack
     EOT
 
     bucket_labels = {
