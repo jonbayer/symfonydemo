@@ -1,5 +1,5 @@
-name: Investigate environment 
-run-name: nginx + php + sqlite stack by ${{ github.actor }} 
+name: Build webserver 
+run-name: nginx + php + sqlite stack + deploy by ${{ github.actor }} 
 on: [push]
 env:
   HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
@@ -10,7 +10,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
-  Explore-GitHub-Actions:
+  build_webserver_ami:
     runs-on: ubuntu-latest
     environment: hcp 
     steps:
