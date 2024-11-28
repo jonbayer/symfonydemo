@@ -17,7 +17,7 @@ Things I would do to make this production-ready
 
 Drawbacks of current setup
 ----------
-AMI Builds are comparitively slow to docker builds, this whole process could be accelerated greatly with an AMI that simply pulls the latest docker image on launch setup in an autoscaling group. 
+AMI Builds are comparitively slow, there are a number of ways this process could be accelerated. 
 Alternately if this is fast enough you could deploy this with a cloudformation asg with a blue/green setup. 
 
 Installation
@@ -25,7 +25,7 @@ Installation
 
 **Step 1.**
 
-Simply clone this repo and set your own AWS keys as environment secrets in github actions, it will build an AMI in the us-east-1 region, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
+Simply clone this repo and set your own AWS keys as environment secrets in github actions, it will build an AMI in the us-east-1 region on merge, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
 
 **Step 2.** 
 just terraform CLI for this step, CI/Cloud-based would be ideal here but I ran out of time.
