@@ -8,8 +8,9 @@ Things I would do to make this production-ready
 
   * Sqlite replaced with non-ephemeral RDS.
   * ELB/ALB in front of an auto-scaling group for resilience/scalability, ssl/dns.
+  * Automatically invoke deployment after successful test/build.
   * CI-Based terraform deployments with state storage.
-  * tune nginx/php-fpm configuration
+  * tune nginx/php-fpm configuration (cache sizes, possible external memcache/redis for session data).
 
 Drawbacks of current setup
 ----------
