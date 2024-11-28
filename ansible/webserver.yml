@@ -24,7 +24,7 @@
       composer: 
         command: install 
         working_dir: /var/www/html
-        register: result
+      register: result
       ignore_errors: true
       environment:
         COMPOSER_NO_INTERACTION: "1"
