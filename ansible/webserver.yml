@@ -10,10 +10,24 @@
       package:
         name: 'nginx'
         state: present
-    - name: install php-fpm 
-      package:
-        name: 'php-fpm'
-        state: present
+    - name: install php 
+      apt:
+        pkg:
+         - php-fpm 
+         - php-sqlite3 
+         - php-xml 
+         - php-curl
+         - composer 
+        state: latest
+        update_cache: true      
+    - name: Composer install
+      composer: 
+        command: install 
+        working_dir: /var/www/html
+      environment:
+        COMPOSER_NO_INTERACTION: "1"
+    - name: update permissions
+      file: dest=/var/www/html owner=www-data group=www-data
     - name: Template nginx config file 
       ansible.builtin.template:
         src: nginx-symfony.conf.j2
