@@ -50,7 +50,7 @@ This is an image for HashiCups.
   # Set up HashiCups
   provisioner "shell" {
     inline = [
-      "sudo apt-get update && sudo apt-get -y intsall nginx php-fpm"
+      "sudo apt-get update && sudo apt-get -y install nginx php-fpm"
     ]
   }
   # systemd unit for HashiCups service
