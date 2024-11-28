@@ -23,10 +23,13 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
-      - run: echo "${{ secrets.AWS_ACCESS_KEY_ID }}" > foobar
-      - run: wc -c foobar
       - run: echo "💡 The ${{ secrets.AWS_ACCESS_KEY_ID }} repository has been cloned to the runner."
 
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@8c3f20df09ac63af7b3ae3d7c91f105f857d8497 # v4.0.0
         with:
@@ -34,15 +37,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls -alh ${{ github.workspace }}
+      - name: Packer Init
+        run: packer init .
 
-      - name: List files in the repository
-        run: |
-          ls -alh ${{ github.workspace }}
+      - name: Packer Build - Branches
+        if: startsWith(github.ref, 'refs/heads/')
+        run: packer build .
       - run: echo "🍏 This job's status is ${{ job.status }}."
