@@ -14,4 +14,7 @@
       package:
         name: 'php-fpm'
         state: present
-
+    - name: Template nginx config file 
+      ansible.builtin.template:
+        src: nginx-symfony.conf.j2
+        dest: /etc/nginx/sites-available/default 
