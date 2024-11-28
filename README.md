@@ -1,17 +1,19 @@
-Symfony Demo Application
+Devops Test Question
 ========================
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop applications following the [Symfony Best Practices][1].
+For this test I created a CI pipeline with github actions to automatically build a new image in packer, which can then be deployed via the included terraform (main.tf). To run this yourself you can simply fork the repo and set the appropriate AWS env variables to build a simple packer image that hosts the symfony demo app using an sqlite DB. 
 
-You can also learn about these practices in [the official Symfony Book][5].
-
-Requirements
+Things needed to make this production-ready
 ------------
 
-  * PHP 8.2.0 or higher;
-  * PDO-SQLite PHP extension enabled;
-  * and the [usual Symfony application requirements][2].
+  * Sqlite replaced with non-ephemeral RDS.
+  * CI-Based terraform deployments.
+  * ELB/ALB in front of an auto-scaling group for resilience/scalability, ssl/dns. 
+
+Drawbacks of current setup
+----------
+AMI Builds are comparitively slow to docker builds, this whole process could be accelerated greatly with an AMI that simply pulls the latest docker image on launch setup in an autoscaling group. 
+Alternately if this is fast enough you could deploy this with a cloudformation asg with a blue/green setup. 
 
 Installation
 ------------
