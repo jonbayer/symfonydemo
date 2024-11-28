@@ -17,7 +17,7 @@ Things I would do to make this production-ready
 
 Drawbacks of current setup
 ----------
-AMI Builds are comparitively slow to docker builds, this whole process could be accelerated greatly with an AMI that simply pulls the latest docker image on launch setup in an autoscaling group. 
+AMI Builds are comparitively slow, there are a number of ways this process could be accelerated. 
 Alternately if this is fast enough you could deploy this with a cloudformation asg with a blue/green setup. 
 
 Installation
