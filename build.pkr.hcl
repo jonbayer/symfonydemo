@@ -69,7 +69,8 @@ This is an image for HashiCups.
   }
    provisioner "ansible" {
       playbook_file = "./ansible/webserver.yml"
-    }
+  extra_arguments = [ "-vvvv" ]  
+  }
 
   # systemd unit for HashiCups service
 
