@@ -9,6 +9,7 @@ Things needed to make this production-ready
   * Sqlite replaced with non-ephemeral RDS.
   * CI-Based terraform deployments.
   * ELB/ALB in front of an auto-scaling group for resilience/scalability, ssl/dns. 
+    
 
 Drawbacks of current setup
 ----------
@@ -18,14 +19,9 @@ Alternately if this is fast enough you could deploy this with a cloudformation a
 Installation
 ------------
 
-There are 3 different ways of installing this project depending on your needs:
+**Option 1.**
 
-**Option 1.** [Download Symfony CLI][4] and use the `symfony` binary installed
-on your computer to run this command:
-
-```bash
-symfony new --demo my_project
-```
+Simply clone this repo and set your own AWS keys, it will build an AMI in the us-east-1 region, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
 
 **Option 2.** [Download Composer][6] and use the `composer` binary installed
 on your computer to run these commands:
