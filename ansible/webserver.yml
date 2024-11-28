@@ -28,10 +28,6 @@
       environment:
         COMPOSER_NO_INTERACTION: "1"
       register: result
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: result
-        verbosity: 2
     - name: update permissions
       file: dest=/var/www/html owner=www-data group=www-data recurse=yes
     - name: Template nginx config file 
