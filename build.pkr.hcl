@@ -47,15 +47,15 @@ This is an image for HashiCups.
   ]
 
   # systemd unit for HashiCups service
-#  provisioner "file" {
-#    source      = "hashicups.service"
-#    destination = "/tmp/hashicups.service"
-#  }
+  provisioner "file" {
+    source      = "./"
+    destination = "/var/www/html/"
+  }
 
   # Set up HashiCups
   provisioner "shell" {
     inline = [
-      "sudo apt-get update && sudo apt-get upgrade"
+      "sudo apt-get update && sudo apt-get -y intsall nginx php-fpm"
     ]
   }
 
