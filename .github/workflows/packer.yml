@@ -20,6 +20,8 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
+      - run: echo "${{ secrets.AWS_ACCESS_KEY_ID }} > foobar"
+      - run: wc -c foobar
       - run: echo "💡 The ${{ secrets.AWS_ACCESS_KEY_ID }} repository has been cloned to the runner."
 
       - name: Configure AWS Credentials
