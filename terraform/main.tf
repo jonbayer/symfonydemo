@@ -9,10 +9,6 @@ terraform {
       source  = "hashicorp/random"
       version = "3.4.3"
     }
-  hcp = {
-      source = "hashicorp/hcp"
-      version = "0.99.0"
-    }
   }
   required_version = ">= 1.1.0"
 
@@ -33,7 +29,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["symfonydemo_173282*"]
   }
 
   filter {
@@ -41,15 +37,15 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"] # Canonical
+  owners = ["794038232684"] # your aws id 
 }
 
-data "hcp_packer_artifact" "webstack" {
-  bucket_name   = "webstack"
-  channel_name  = "latest"
-  platform      = "aws"
-  region        = "us-east-1"
-}
+//data "hcp_packer_artifact" "webstack" {
+//  bucket_name   = "webstack"
+//  channel_name  = "latest"
+//  platform      = "aws"
+//  region        = "us-east-1"
+//}
 
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
@@ -69,8 +65,8 @@ resource "aws_instance" "web" {
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.sg.id}-sg"
   ingress {
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -84,5 +80,5 @@ resource "aws_security_group" "web-sg" {
 }
 
 output "web-address" {
-  value = "${aws_instance.web.public_dns}:8080"
+  value = "${aws_instance.web.public_dns}"
 }

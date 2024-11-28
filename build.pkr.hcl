@@ -34,17 +34,6 @@ source "amazon-ebs" "ubuntu-lts" {
 }
 
 build {
-  # HCP Packer settings
-  hcp_packer_registry {
-    bucket_name = "webstack"
-    description = <<EOT
-    nginx + php-fpm + composer stack
-    EOT
-
-    bucket_labels = {
-      "role" = "nginx_composer_webserver",
-    }
-  }
 
   sources = [
     "source.amazon-ebs.ubuntu-lts",
@@ -72,7 +61,6 @@ build {
 #  extra_arguments = [ "-vvvv" ]  
   }
 
-  # systemd unit for HashiCups service
 
   post-processor "manifest" {
     output     = "packer_manifest.json"
