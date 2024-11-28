@@ -8,8 +8,12 @@ Things I would do to make this production-ready
 
   * Sqlite replaced with non-ephemeral RDS.
   * ELB/ALB in front of an auto-scaling group for resilience/scalability, ssl/dns.
+  * Automatically invoke deployment after successful test/build.
   * CI-Based terraform deployments with state storage.
-  * tune nginx/php-fpm configuration
+  * tune nginx/php-fpm configuration (shm sizes, worker limits, apc/apcu settings, possible external memcache/redis for session data + symfony cache).
+  * deployment approval steps, e2e testing
+  * some sort of stats collection/monitoring stack (grafana, loki, mimir or whatever).
+  * proper alerting for critical conditions 
 
 Drawbacks of current setup
 ----------
@@ -24,5 +28,6 @@ Installation
 Simply clone this repo and set your own AWS keys as environment secrets in github actions, it will build an AMI in the us-east-1 region, which the terraform will deploy. You will need to update the terraform ami owner filter for the source AMI for it to pick up the image. Once the first build is completed successfully, simply run the included terraform to deploy this. 
 
 **Step 2.** 
-run `terraform init` within the terraform folder.
+just terraform CLI for this step, CI/Cloud-based would be ideal here but I ran out of time.
+run `terraform init` within the terraform folder followed by plan and once you're satisfied terraform apply.
 visit the dns name provided after ~30 seconds for t2.micro type instances. interact, edit some fields, do what you will. 
