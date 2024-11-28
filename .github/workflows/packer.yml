@@ -1,5 +1,5 @@
 name: Investigate environemnt 
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out packer 
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -18,7 +18,7 @@ jobs:
       - name: Build VM image with Packer
         uses: santisaez/packer-action@v1
         with:
-          template: aws.hcl
+          template: aws.json
       - name: List files in the repository
         run: |
           ls -alh ${{ github.workspace }}
