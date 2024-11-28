@@ -33,7 +33,7 @@
         var: result
         verbosity: 2
     - name: update permissions
-      file: dest=/var/www/html owner=www-data group=www-data
+      file: dest=/var/www/html owner=www-data group=www-data recurse=yes
     - name: Template nginx config file 
       ansible.builtin.template:
         src: nginx-symfony.conf.j2
