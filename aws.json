@@ -26,7 +26,6 @@
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
     "shutdown_behavior": "terminate",
-    "subnet_id" : "subnet-3ff00b00", 
     "source_ami_filter": {
       "filters": {
         "name": "amzn2-ami-hvm*x86_64-gp2"
