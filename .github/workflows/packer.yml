@@ -12,10 +12,13 @@ jobs:
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls -alh ${{ github.workspace }}
       - name: Build VM image with Packer
         uses: santisaez/packer-action@v1
         with:
-          template: aws.json
+          template: aws.hcl
       - name: List files in the repository
         run: |
           ls -alh ${{ github.workspace }}

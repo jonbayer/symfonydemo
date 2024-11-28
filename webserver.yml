@@ -1,0 +1,17 @@
+
+---
+# playbook.yml
+- name: 'Provision Image'
+  hosts: default
+  become: true
+
+  tasks:
+    - name: install nginx 
+      package:
+        name: 'nginx'
+        state: present
+    - name: install php-fpm 
+      package:
+        name: 'nginx'
+        state: present
+
