@@ -21,12 +21,12 @@ source "amazon-ebs" "ubuntu-lts" {
     owners      = ["099720109477"]
     most_recent = true
   }
-  instance_type  = "t2.small"
+  instance_type  = "t2.micro"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
 
   ami_name    = "hashicups_{{timestamp}}"
-  ami_regions = ["us-west-1"]
+  ami_regions = ["us-east-1"]
 }
 
 build {
@@ -47,15 +47,15 @@ This is an image for HashiCups.
   ]
 
   # systemd unit for HashiCups service
-  provisioner "file" {
-    source      = "hashicups.service"
-    destination = "/tmp/hashicups.service"
-  }
+#  provisioner "file" {
+#    source      = "hashicups.service"
+#    destination = "/tmp/hashicups.service"
+#  }
 
   # Set up HashiCups
   provisioner "shell" {
-    scripts = [
-      "setup-deps-hashicups.sh"
+    inline = [
+      "apt-get update && apt-get upgrade"
     ]
   }
 
