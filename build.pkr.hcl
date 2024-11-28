@@ -55,7 +55,7 @@ This is an image for HashiCups.
   # Set up HashiCups
   provisioner "shell" {
     inline = [
-      "apt-get update && apt-get upgrade"
+      "sudo apt-get update && sudo apt-get upgrade"
     ]
   }
 
