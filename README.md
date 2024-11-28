@@ -15,10 +15,10 @@ Things I would do to make this production-ready
   * some sort of stats collection/monitoring stack (grafana, loki, mimir or whatever).
   * proper alerting for critical conditions 
 
-Drawbacks of current setup
+Notes on current setup
 ----------
-AMI Builds are comparitively slow, there are a number of ways this process could be accelerated. 
-Alternately if this is fast enough you could deploy this with a cloudformation asg with a blue/green setup. 
+AMI Builds are comparitively slow, there are a number of ways this process (deployments) could be accelerated.
+The database is ephemeral. 
 
 Installation
 ------------
