@@ -46,17 +46,17 @@ This is an image for HashiCups.
     "source.amazon-ebs.ubuntu-lts",
   ]
 
-  # systemd unit for HashiCups service
-  provisioner "file" {
-    source      = "./"
-    destination = "/var/www/html/"
-  }
 
   # Set up HashiCups
   provisioner "shell" {
     inline = [
       "sudo apt-get update && sudo apt-get -y intsall nginx php-fpm"
     ]
+  }
+  # systemd unit for HashiCups service
+  provisioner "file" {
+    source      = "./"
+    destination = "/var/www/html/"
   }
 
   post-processor "manifest" {
