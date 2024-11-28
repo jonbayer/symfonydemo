@@ -19,6 +19,10 @@ jobs:
         uses: santisaez/packer-action@v1
         with:
           template: aws.json
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+
       - name: List files in the repository
         run: |
           ls -alh ${{ github.workspace }}
