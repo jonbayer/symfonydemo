@@ -10,7 +10,10 @@ Things I would do to make this production-ready
   * ELB/ALB in front of an auto-scaling group for resilience/scalability, ssl/dns.
   * Automatically invoke deployment after successful test/build.
   * CI-Based terraform deployments with state storage.
-  * tune nginx/php-fpm configuration (cache sizes, possible external memcache/redis for session data).
+  * tune nginx/php-fpm configuration (shm sizes, worker limits, apc/apcu settings, possible external memcache/redis for session data + symfony cache).
+  * deployment approval steps, e2e testing
+  * some sort of stats collection/monitoring stack (grafana, loki, mimir or whatever).
+  * proper alerting for critical conditions 
 
 Drawbacks of current setup
 ----------
