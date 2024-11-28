@@ -56,7 +56,7 @@ This is an image for HashiCups.
   }
   provisioner "shell" {
     inline = [
-      "sudo apt-get update && sudo apt-get -y upgrade  && sudo apt-get -y install nginx"
+      "sudo apt-get update && sudo apt-get -y upgrade  && sudo apt-get -y install nginx && sudo chown -R ubuntu: /var/www/html"
     ]
   }
   # systemd unit for HashiCups service
